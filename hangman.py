@@ -6,26 +6,15 @@
 
 import random
 
-word_list = [
-    "dog",
-    "cat",
-    "pizza",
-    "chicken",
-    "coding",
-    "python",
-    "space",
-    "class",
-    "math",
-]
-
 
 def get_word(word_list):
+    # Some info found from: https://www.youtube.com/watch?v=m4nEnsavl6w
     word = random.choice(word_list)
     return word.upper()
 
 
-# Some info found from: https://www.youtube.com/watch?v=m4nEnsavl6w
 def play(word):
+    # Some info found from: https://www.youtube.com/watch?v=m4nEnsavl6w
     word_completion = "_" * len(word)
     guessed = False
     guessed_letters = []
@@ -37,8 +26,8 @@ def play(word):
     while not guessed and tries > 0:
         guess = input("Guess a letter (NO FULL WORDS): ").upper()
 
-        # Some info found from: https://www.youtube.com/watch?v=5x6iAKdJB6U&t=470s
         if len(guess) == 1 and guess.isalpha():
+            # Some info found from: https://www.youtube.com/watch?v=5x6iAKdJB6U&t=470s
             if guess in guessed_letters:
                 print("You already entered", guess, "!")
 
@@ -47,8 +36,8 @@ def play(word):
                 tries -= 1
                 guessed_letters.append(guess)
 
-            # Some info found from: https://www.youtube.com/watch?v=3_CX0aD9Fdg
             else:
+                # Some info found from: https://www.youtube.com/watch?v=3_CX0aD9Fdg
                 print("Great job,", guess, "is in the word!")
                 guessed_letters.append(guess)
                 word_as_list = list(word_completion)
@@ -73,8 +62,8 @@ def play(word):
         print("You lose. The word was " + word + "!")
 
 
-# Graphics info found from: shorturl.at/belG0
 def display_hangman(tries):
+    # Graphics info found from: shorturl.at/belG0
     stages = [
         """
                    --------
@@ -140,10 +129,25 @@ def display_hangman(tries):
                    -
                    """,
     ]
+
     return stages[tries]
 
 
 def main():
+    # This is the main function for "Hangman" program
+
+    word_list = [
+        "dog",
+        "cat",
+        "pizza",
+        "chicken",
+        "coding",
+        "python",
+        "space",
+        "class",
+        "math",
+    ]
+
     word = get_word(word_list)
     play(word)
     while input("Again? (Y/N) ").upper() == "Y":
